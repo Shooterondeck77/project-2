@@ -1,13 +1,7 @@
-const User = require('./User');
-const Project = require('./Project');
+const Product = require('./Product');
+const Category = require('./Category');
+const Condition = require('./Condition');
+const ProductCondition = require('./ProductCondition');
+const ProductAge = require('./ProductAge');
 
-User.hasMany(Project, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
-
-Project.belongsTo(User, {
-  foreignKey: 'user_id'
-});
-
-module.exports = { User, Project };
+module.exports = { Product, Category, Condition, ProductCondition, ProductAge };
