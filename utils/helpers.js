@@ -1,8 +1,10 @@
 module.exports = {
+   // Helper to format a date as MM/DD/YYYY
   format_date: (date) => {
-    // Format date as MM/DD/YYYY
-    return date.toLocaleDateString();
+    const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+    return new Date(date).toLocaleDateString(undefined, options);
   },
+
   format_amount: (amount) => {
     // format large numbers with commas
     return parseInt(amount).toLocaleString();
@@ -18,5 +20,18 @@ module.exports = {
     } else {
       return `<span for="img" aria-label="gear">⚙️</span>`;
     }
+  },
+
+  // Helper to truncate text to a certain length
+  truncate_text: (text, length) => {
+    if (text.length > length) {
+      return text.substring(0, length) + '...';
+    }
+    return text;
+  },
+
+  // Helper to capitalize the first letter of a string
+  capitalize: (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
   },
 };
