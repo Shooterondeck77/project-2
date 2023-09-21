@@ -1,0 +1,86 @@
+ <h1>Your shopping cart</h1>
+      <h2>Here Are Your Items</h2>
+      
+      <!-- Cart table -->
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">UserId</th>
+            <th scope="col">ProductId</th>
+            <th scope="col">Product Name </th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody id="cartTable">
+          <!-- Cart data -->
+        </tbody>
+      </table>
+      <!-- /Cart table -->
+
+      <button type="button" class="btn btn-secondary" id="continueBrowsing">
+        Continue browsing
+      </button>
+      <button type="button" class="btn btn-primary" id="confirmPurchase">
+        Confirm purchase
+      </button>
+
+      <!-- Purchase confirmation modal -->
+      <div
+        class="modal fade"
+        id="purchaeConfirmationModal"
+        data-backdrop="static"
+        data-keyboard="false"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="purchaeConfirmationModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="purchaeConfirmationModal">
+                Purchase confirmation
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Payment received.</p>
+              <p>See you next time</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Purchase confirmation modal -->
+ 
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
