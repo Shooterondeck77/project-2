@@ -1,7 +1,10 @@
 const Product = require('./Product');
 const Category = require('./Category');
-const Condition = require('./Condition');
-const ProductCondition = require('./ProductCondition');
-const ProductAge = require('./ProductAge');
+const User = require('./User');
 
-module.exports = { Product, Category, Condition, ProductCondition, ProductAge };
+Product.belongsTo(Category, {
+    foreignKey: 'category_id',
+    onDelete: 'CASCADE'
+})
+
+module.exports = { Product, Category, User };

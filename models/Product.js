@@ -22,18 +22,13 @@ Product.init(
         isDecimal: true, 
       }
     },
-    rating: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      defaultValue: 10,
-      Validate: {
-        isNumeric: true, 
-      }
-    },
     description: {
         type: DataTypes.STRING,
         allowNull: false,
-
+      },
+    condition: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     category_id: {
       type: DataTypes.INTEGER,
