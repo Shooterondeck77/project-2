@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
+const { Product, Review } = require('./models');
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -40,6 +41,42 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
+
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.findAll();
+    res.json(products);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.get('/api/products/:id', async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await Product.findByPk(productId);
+
+    if (!product) {
+      res.status(404).json({ message: 'Product not found' });
+      return;
+    }
+
+    res.json(product);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+app.get('/api/products/:id/reviews', async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const reviews = await Review.findAll({ where: { product_id: productId } });
+
+    res.json(reviews);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
