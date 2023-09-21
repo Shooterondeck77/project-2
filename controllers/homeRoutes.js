@@ -2,9 +2,9 @@ const router = require('express').Router();
 const { Product, User } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+/*router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
+    // Get all products and JOIN with user data
     const productData = await Product.findAll({
       include: [
         {
@@ -25,7 +25,26 @@ router.get('/', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
+});*/
+
+const { Sequelize } = require('sequelize');
+
+router.get('/', async (req, res) => {
+  try {
+    const productData = await Product.findAll({
+      order: Sequelize.literal('rand()'),
+      limit: 6,
+    });
+
+    const products = productData.map((product) => product.get({ plain: true }));
+
+    res.render('homepage', { products });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
+
+
 
 router.get('/product/:id', async (req, res) => {
   try {
