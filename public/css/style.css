@@ -47,3 +47,29 @@ header, .project:not(:last-child) {
   top: 60px;
   margin-left: 10px;
 }
+
+.profile-card {
+  position: relative;
+}
+
+.profile-container {
+  border: solid;
+  border-radius: 10px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.img-fluid {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.profile-main {
+  justify-content: center;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+}

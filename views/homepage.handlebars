@@ -12,17 +12,21 @@
 
 <body>
   <h2 id="top-picks">Picks For You</h2>
-    <main class="container container-fluid mt-5">
-      {{#each products}}
+  <main class="container container-fluid mt-5">
+    {{#each products}}
+    <a href="/product/{{this.id}}" class="product-link">
       <div id="prodcard" class="product-card">
         <h2>{{this.product_name}}</h2>
         <p class="condition">Condition: {{this.condition}}</p>
         <p>Seller: {{this.user.name}}</p>
       </div>
-      {{/each}}
-    </main>
-    <footer>
-    </footer>
+    </a>
+    {{/each}}
+
+  </main>
+
+  <footer>
+  </footer>
   </div>
 
   {{#if logged_in}}
