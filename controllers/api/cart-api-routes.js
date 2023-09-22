@@ -1,12 +1,12 @@
 // Requiring our models
 var db = require("../models");
-
+var isAuthenticated = require("../middleware/isAuth"); // Import your authentication middleware
 // Routes
 
 module.exports = function (app) {
 
   // GET route for getting all of the carts
-  app.get("/api/cart", function (req, res) {
+  app.get("/api/cart",isAuth, function (req, res) {
     db.Cart.findAll({
       include: [db.Book]
     }).then(function (dbCart) {
@@ -35,7 +35,7 @@ module.exports = function (app) {
 
  
   // POST route for saving a new cart
-  app.post("/api/cart", function (req, res) {
+  app.post("/api/cart",isAuth, function (req, res) {
     db.Cart.create({
       UserId: req.body.UserId,
       BookId: req.body.ProductId
