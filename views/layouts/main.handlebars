@@ -21,9 +21,11 @@
         <p style="display: inline; margin: 0;"></p>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
+        <a href="/">home</a> |
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
+        <a href="/">home</a> |
         <a href="/login">login</a>
         {{/if}}
       </nav>

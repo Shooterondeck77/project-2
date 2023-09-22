@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
 
     const products = productData.map((product) => product.get({ plain: true }));
 
-    res.render('homepage', { products });
+    res.render('homepage', { products, logged_in:req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
