@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const { Product, Category } = require('../../models');
+const { Product, Category, Review } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// Create a new product
 router.post('/', async (req, res) => {
   try {
     const newProduct = await Product.create(req.body);
@@ -13,7 +14,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-
 /*{
   "id": 1,
   "product_name": "Basketballs",
@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
   "category_id": 1
 }*/
 
+// Delete a product
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     const productData = await Product.destroy({
@@ -43,6 +44,7 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
+// Fetch all products
 router.get('/', (req, res) => {
   Product.findAll().then((prodData) => {
     res.json(prodData);
@@ -61,7 +63,32 @@ router.get('/categories', async (req, res) => {
   }
 });
 
+router.get('/:id', async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const product = await Product.findByPk(productId);
 
+    if (!product) {
+      res.status(404).json({ message: 'Product not found' });
+      return;
+    }
 
+    res.json(product);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/:id/reviews', async (req, res) => {
+  try {
+    const productId = req.params.id;
+    const reviews = await Review.findAll({ where: { product_id: productId } });
+
+    res.json(reviews);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
+
