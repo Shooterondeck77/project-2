@@ -1,6 +1,6 @@
 // Requiring our models
 var db = require("../models");
-var isAuthenticated = require("../middleware/isAuth"); // Import your authentication middleware
+var isAuth = require("../middleware/isAuth"); // Import your authentication middleware
 // Routes
 
 module.exports = function (app) {
