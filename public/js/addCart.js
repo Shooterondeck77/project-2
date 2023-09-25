@@ -39,7 +39,7 @@ cartItems.forEach((item) => {
     <td>$${item.price.toFixed(2)}</td>
     <td>$${(item.quantity * item.price).toFixed(2)}</td>
     <td><button class="btn btn-danger" onclick="removeItem(${item.id})">Remove</button></td>
-  `;
+  `; 
   cartTableBody.appendChild(row);
 });
 
