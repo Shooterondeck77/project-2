@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fund My Project!</title>
+    <link rel="stylesheet" href="/css/jass.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/listing.css">
+</head>
+
+
+<body>
+    <div class="list-container">
+        <div id="prodcard" class="product-card-list">
+            <h2>{{product.product_name}}</h2>
+            <p class="condition">Condition: {{this.condition}}</p>
+            <p>Seller: {{this.user.name}}</p>
+        </div>
+        <div class="list-info">
+            <p>{{product.product_name}}</p>
+            <p id="item-price">${{product.price}}</p>
+            <p>Condition: {{product.condition}}</p>
+            {{#if logged_in}}
+            <button id="add-cart">Add To Cart</button>
+            {{else}}
+            <a href="/login" ><button id="else-add-cart">Login to Add to Cart</button> </a>
+            {{/if}}
+        </div>
+        <div class="list-description">
+            <p>This is a test description.</p>
+        </div>
+        <div class="list-review">
+            <p>These are the product reviews.</p>
+        </div>
+    </div>
+
+</body>
+<footer>
+</footer>
+</div>
+
+{{#if logged_in}}
+<script src="/js/logout.js"></script>
+<script src="/js/addCart.js"></script>
+{{/if}}
+</body>
+
+</html>

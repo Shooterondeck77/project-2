@@ -1,14 +1,37 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fund My Project!</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+
+<body>
+  <h2 id="top-picks">Picks For You</h2>
+  <main class="container container-fluid mt-5">
+    {{#each products}}
+    <a href="/product/{{this.id}}" class="product-link">
+      <div id="prodcard" class="product-card">
+        <h2>{{this.product_name}}</h2>
+        <p class="condition">Condition: {{this.condition}}</p>
+        <p>Seller: {{this.user.name}}</p>
+      </div>
+    </a>
+    {{/each}}
+
+  </main>
+
+  <footer>
+  </footer>
+  </div>
+
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+</body>
+
+</html>
