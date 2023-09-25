@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, User, Cart } = require('../models');
+const { Product, User, Category } = require('../models');
 const withAuth = require('../utils/auth');
 
 /*router.get('/', async (req, res) => {
@@ -44,8 +44,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-
-
 router.get('/product/:id', async (req, res) => {
   try {
     const productData = await Product.findByPk(req.params.id, {
@@ -59,10 +57,8 @@ router.get('/product/:id', async (req, res) => {
 
     const product = productData.get({ plain: true });
 
-    res.render('product', {
-      ...product,
-      logged_in: req.session.logged_in
-    });
+    res.render('productListing', { product, logged_in: req.session.logged_in }); // Set logged_in based on session
+
   } catch (err) {
     res.status(500).json(err);
   }
@@ -108,5 +104,96 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+router.get('/categories', async (req, res) => {
+  try {
+    const productData = await Product.findAll({
+      order: Sequelize.literal('rand()'),
+    });
+
+    const products = productData.map((product) => product.get({ plain: true }));
+
+    res.render('project', { products, logged_in:req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/categories/:id', async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+
+    // Use `findByPk` to find a category by its primary key
+    const categoryWithProducts = await Category.findByPk(categoryId, {
+      include: [{ model: Product }],
+    });
+
+    // Render the "project" view with the category data
+    res.render('project', { category: categoryWithProducts }); // Pass a single category, not an array
+    console.log(categoryWithProducts.dataValues);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.post('/add-to-cart/:productId', async (req, res) => {
+  const { productId } = req.params;
+  const { userId } = req.session; // Assuming you have user session data
+
+  // Update the product's cart_id to match the user's cart_id
+  await Product.update(
+    { cart_id: userId },
+    { where: { id: productId } }
+  );
+
+  // Redirect or respond as needed
+});
+
+
+router.get('/cart/:cartId', async (req, res) => {
+  try {
+    const { cartId } = req.params; // Get the cart ID from the URL parameter
+
+    // Find all products that have the specified cart ID
+    const productData = await Product.findAll({
+      where: {
+        cart_id: cartId, // Filter by cart_id
+      },
+      order: Sequelize.literal('rand()'),
+    });
+
+    const products = productData.map((product) => product.get({ plain: true }));
+
+    // Render the "cart" view with the selected products
+    res.render('cart', { products, logged_in: req.session.logged_in });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// router.get('/cart/:cartId', async (req, res) => {
+//   try {
+//     const { cartId } = req.params; // Get the cart ID from the URL parameter
+
+//     // Find all products that have the specified cart ID
+//     const productData = await Product.findAll({
+//       where: {
+//         cart_id: cartId, // Filter by cart_id
+//       },
+//       order: Sequelize.literal('rand()'),
+//     });
+
+//     const products = productData.map((product) => product.get({ plain: true }));
+
+//     console.log('Cart ID:', cartId);
+
+//     // Render the "cart" view with the selected products
+//     res.json(products)
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
+
 
 module.exports = router;

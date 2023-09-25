@@ -35,6 +35,10 @@ User.init(
         len: [8],
       },
     },
+    cart_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
     hooks: {

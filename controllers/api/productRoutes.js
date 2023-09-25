@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
   });
 });
 
-router.get('/categories', async (req, res) => {
+router.get('/categories/', async (req, res) => {
   try {
     const categoriesWithProducts = await Category.findAll({
       include: [{ model: Product }],
@@ -79,4 +79,49 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.get('/categories/:id', async (req, res) => {
+  try {
+    const categoryId = req.params.id; // Get the category ID from the URL parameter
+
+    // Use `findByPk` to find a category by its primary key and include associated products
+    const categoryWithProducts = await Category.findByPk(categoryId, {
+      include: [{ model: Product }],
+    });
+
+    res.json(categoryWithProducts);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+router.put('/cartid/:productId', async (req, res) => {
+  try {
+    const { productId } = req.params;
+    const  userId  = req.session.user_id;
+
+    // Find the product by its ID
+    const product = await Product.findByPk(productId);
+
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+    console.log(req.session.user_id)
+    console.log(userId)
+    console.log('heythere')
+    // Update the product's cart_id to match the user's cart_id
+    product.cart_id = userId; // Assuming `userId` represents the user's cart_id
+
+    // Save the updated product
+    await product.save();
+
+    res.status(200).json({ message: 'Product cart_id updated successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
 module.exports = router;
+
