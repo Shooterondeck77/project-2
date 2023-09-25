@@ -1,37 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-
-
-<body>
   <h2 id="top-picks">Picks For You</h2>
   <main class="container container-fluid mt-5">
     {{#each products}}
-    <a href="/product/{{this.id}}" class="product-link">
+    <a href="/product/{{id}}" class="product-link">
       <div id="prodcard" class="product-card">
-        <h2>{{this.product_name}}</h2>
-        <p class="condition">Condition: {{this.condition}}</p>
-        <p>Seller: {{this.user.name}}</p>
+        <h2>{{product_name}}</h2>
+        <p class="condition">Condition: {{condition}}</p>
+        <p>Seller: {{user.name}}</p>
       </div>
     </a>
     {{/each}}
 
   </main>
-
-  <footer>
-  </footer>
-  </div>
-
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
-
-</html>

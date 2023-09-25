@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Product, User } = require('../models');
+const { Product, User, Cart } = require('../models');
 const withAuth = require('../utils/auth');
 
 /*router.get('/', async (req, res) => {
@@ -87,6 +87,17 @@ router.get('/profile', withAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/cart", (req, res) => {
+  try {
+
+res.render("cart")
+
+  } catch(err) {
+    res.status(500).json(err)
+    console.log(err)
+  }
+})
 
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
