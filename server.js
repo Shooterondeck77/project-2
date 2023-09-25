@@ -39,8 +39,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Import the product listing routes
+const productListingRoutes = require('./routes/productListingRoutes');
+
+// Use the product listing routes at the desired URL path
+app.use('/products', productListingRoutes);
+
+// Use your existing routes
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
 });
+

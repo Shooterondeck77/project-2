@@ -79,17 +79,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.get('/:id/reviews', async (req, res) => {
-  try {
-    const productId = req.params.id;
-    const reviews = await Review.findAll({ where: { product_id: productId } });
-
-    res.json(reviews);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
 router.get('/categories/:id', async (req, res) => {
   try {
     const categoryId = req.params.id; // Get the category ID from the URL parameter
