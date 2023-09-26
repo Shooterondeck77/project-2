@@ -14,15 +14,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-/*{
-  "id": 1,
-  "product_name": "Basketballs",
-  "price": "36",
-  "description": "This is a test description",
-  "condition": "new",
-  "category_id": 1
-}*/
-
 // Delete a product
 router.delete('/:id', withAuth, async (req, res) => {
   try {
@@ -81,9 +72,8 @@ router.get('/:id', async (req, res) => {
 
 router.get('/categories/:id', async (req, res) => {
   try {
-    const categoryId = req.params.id; // Get the category ID from the URL parameter
+    const categoryId = req.params.id;
 
-    // Use `findByPk` to find a category by its primary key and include associated products
     const categoryWithProducts = await Category.findByPk(categoryId, {
       include: [{ model: Product }],
     });
@@ -99,20 +89,14 @@ router.put('/cartid/:productId', async (req, res) => {
     const { productId } = req.params;
     const  userId  = req.session.user_id;
 
-    // Find the product by its ID
     const product = await Product.findByPk(productId);
 
     if (!product) {
       return res.status(404).json({ error: 'Product not found' });
     }
 
-    console.log(req.session.user_id)
-    console.log(userId)
-    console.log('heythere')
-    // Update the product's cart_id to match the user's cart_id
-    product.cart_id = userId; // Assuming `userId` represents the user's cart_id
+    product.cart_id = userId;
 
-    // Save the updated product
     await product.save();
 
     res.status(200).json({ message: 'Product cart_id updated successfully' });

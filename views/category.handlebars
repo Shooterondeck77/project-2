@@ -4,29 +4,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sport Stash</title>
+  <title>Fund My Project!</title>
   <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
 
 <body>
+  <h2 id="top-picks">{{category.dataValues.category_name}}</h2>
   <main class="container container-fluid mt-5">
-    {{#each products}}
-    <a href="/product/{{this.id}}" class="product-link">
-      <div id="prodcard" class="product-card" style="background-image: url('{{this.image}}');
+  {{#each category.products}}
+    <a href="/product/{{dataValues.id}}" class="product-link">
+      <div id="prodcard" class="product-card" style="background-image: url('{{dataValues.image}}');
       background-size: cover;">
-        <h2 class="product-title">{{this.product_name}}</h2>
-        <p class="condition">Condition: {{this.condition}}</p>
+        <h2 class="product-title">{{dataValues.product_name}}</h2>
+        <p class="condition">Condition: {{dataValues.condition}}</p>
       </div>
     </a>
-    {{/each}}
+  {{/each}}
+</main>
 
-<div class="all-adspace">
-  AD SPACE
-</div>
-
-  </main>
 
   <footer>
   </footer>

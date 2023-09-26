@@ -1,5 +1,19 @@
+body {
+  background-color: #F2F2F2;
+    color: darkslategray;
+}
+
 header, .project:not(:last-child) {
   border-bottom: 1px solid #ccc;
+}
+
+.main-title a {
+  text-decoration: none;
+}
+
+.search-form {
+  position: absolute;
+  right: -600px;
 }
 
 .no-button {
@@ -25,10 +39,10 @@ header, .project:not(:last-child) {
 
 #prodcard {
   margin: 5px;
-  border: solid;
   padding: 10px;
   height: 200px;
-  width: 300px;
+  width: 330px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
 }
 
 .container {
@@ -36,7 +50,7 @@ header, .project:not(:last-child) {
   flex-wrap: wrap;
   justify-content: space-around;
   height: 500px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin-right: 300px;
   margin-top: 30px;
   margin-left: 10px;
@@ -53,10 +67,37 @@ header, .project:not(:last-child) {
 }
 
 .profile-container {
-  border: solid;
-  border-radius: 10px;
   position: relative;
   padding-bottom: 10px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
+}
+
+.product-title {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  color: black;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
+}
+
+.product-title:hover {
+  opacity: 50%;
+  color: black;
+}
+
+.list-title {
+  margin-left: 20px;
+}
+
+.condition {
+  background-color: white;
+  position: relative;
+  top: 100px;
+  right: -130px;
+  display: flex;
+  max-width: 180px;
+  justify-content: center;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
 }
 
 .img-fluid {
@@ -71,7 +112,11 @@ header, .project:not(:last-child) {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid;
+}
+
+.header-image {
+  max-width: 200px;
+  margin: 10px;
 }
 
 .cat-nav {
@@ -89,4 +134,92 @@ header, .project:not(:last-child) {
 
 .cat-nav a:hover {
   color: black;
+}
+
+.container a {
+  text-decoration: none;
+}
+
+.login-container {
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+  top: 30px;
+}
+
+.login-field {
+  margin-right: 50px;
+  padding: 30px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  background-color: white;
+}
+
+.signup-field {
+  margin-left: 50px;
+  padding: 30px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  background-color: white;
+}
+
+#login1-ad-text {
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+#login2-ad-text {
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 450px;
+}
+
+#list-adtext {
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.ad-space {
+  height: 500px;
+  position: absolute;
+  width: 300px;
+  top: 130px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
+}
+
+#ad-space2 {
+  right: 20px;
+}
+
+#ad-space1 {
+  left: 20px;
+  background-image: url(../assets/images/handlebars.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
+}
+
+#ad-space2 {
+  background-image: url(../assets/images/Javascript-shield.svg.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.list-adspace {
+  background-image: url(../assets/images/CSS-logo.svg);
+  background-size: 100% 100%;
+}
+
+.all-adspace {
+  position: absolute;
+  right: 20px;
+  height: 1700px;
+  width: 260px;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2)
 }
