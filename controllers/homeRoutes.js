@@ -63,6 +63,46 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+router.get("/cart", (req, res) => {
+  try {
+
+    res.render("cart")
+
+  } catch (err) {
+    res.status(500).json(err)
+    console.log(err)
+  }
+})
+
+router.get("/checkout/:cartId", async (req, res) => {
+  try {
+    const { cartId } = req.params; // Get the cart ID from the URL parameter
+
+    // Find all products that have the specified cart ID
+    const productData = await Product.findAll({
+      where: {
+        cart_id: cartId, // Filter by cart_id
+      },
+      order: Sequelize.literal('rand()'),
+    });
+
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Product }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    const products = productData.map((product) => product.get({ plain: true }));
+
+
+    res.render('checkout', {...user, products, logged_in: req.session.logged_in });
+  } catch (error) {
+    console.error(error); // Log the error for debugging
+    res.status(500).json({ error: 'Internal server error' }); // Respond with an error
+  }
+});
+
 router.get('/login', (req, res) => {
 
   if (req.session.logged_in) {
