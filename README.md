@@ -4,7 +4,7 @@
 
 ## Description
 
-SportStash (SS) is an online platform for users looking to purchase sport items
+SportStash (SS) is an online platform for users looking to purchase sports items
 
 ## Features
 
@@ -17,7 +17,7 @@ SportStash (SS) is an online platform for users looking to purchase sport items
 ### Product Listings
 
 - Products are displayed on the main page.
-- Each product includes details such as name, condition, and an image as well as rating
+- Each product includes details such as name, condition, and image as well as a rating
 - Users can click on a product to view more details.
 
 ### Shopping Cart
@@ -33,8 +33,8 @@ SportStash (SS) is an online platform for users looking to purchase sport items
 
 ## Technologies Used
 
-- html, css, javascript, insomnia, handlebar, bootstrap, heroku, sql, nodejs, pure css
+- HTML, CSS, javascript, insomnia, handlebar, bootstrap, Heroku, SQL, nodejs, pure CSS
 
 ## Installation
 
-click on the link for the deployed website on heroku [sportstash](https://sportstash-6f44bb76cc11.herokuapp.com/)
+click on the link for the deployed website on Heroku [sportstash](https://sportstash-6f44bb76cc11.herokuapp.com/)
