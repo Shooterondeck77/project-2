@@ -2,11 +2,11 @@
   <h2 id="top-picks">Picks For You</h2>
   <main class="container container-fluid mt-5">
     {{#each products}}
-    <a href="/product/{{id}}" class="product-link">
-      <div id="prodcard" class="product-card">
-        <h2>{{product_name}}</h2>
-        <p class="condition">Condition: {{condition}}</p>
-        <p>Seller: {{user.name}}</p>
+    <a href="/product/{{this.id}}" class="product-link">
+      <div id="prodcard" class="product-card" style="background-image: url('{{this.image}}');
+      background-size: cover;">
+        <h2 class="product-title">{{this.product_name}}</h2>
+        <p class="condition">Condition: {{this.condition}}</p>
       </div>
     </a>
     {{/each}}

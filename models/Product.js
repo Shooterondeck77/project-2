@@ -16,7 +16,7 @@ Product.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(6, 2),
       allowNull: false,
       validate: {
         isDecimal: true,
@@ -39,6 +39,10 @@ Product.init(
     },
     cart_id: {
       type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    image: {
+      type: DataTypes.STRING,
       allowNull: true,
     },
   },

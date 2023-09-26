@@ -13,10 +13,10 @@
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
+      <h1 class="main-title">
         <a href="/">SPORT STASH</a>
       </h1>
+
       <nav>
         <p style="display: inline; margin: 0;"></p>
         <!-- Conditionally render login or logout links -->
@@ -24,7 +24,7 @@
         <a href="/">home</a> |
         <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button> |
-        <a href="/cart">My Cart</a>
+        <a href="/cart/{{userId}}">my cart</a>
         {{else}}
         <a href="/">home</a> |
         <a href="/login">login</a>
@@ -34,11 +34,11 @@
     <main>
       <nav class="cat-nav">
         <a href="/categories/1">Basketball</a> |
-        <a href="/">Soccer</a> |
-        <a href="/">Volleyball</a> |
-        <a href="/">Badminton</a> |
-        <a href="/">Golf</a> |
-        <a href="/">Football</a> |
+        <a href="/categories/2">Soccer</a> |
+        <a href="/categories/3">Volleyball</a> |
+        <a href="/categories/4">Badminton</a> |
+        <a href="/categories/5">Golf</a> |
+        <a href="/categories/6">Football</a> |
         <a href="/categories">View All</a>
       </nav>
       {{{ body }}}
