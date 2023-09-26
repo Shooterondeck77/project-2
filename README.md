@@ -1,6 +1,6 @@
 # sportstash
 
-<img src = "/public/assets/images/image.png"
+<img src = "/public/assets/images/image.png">
 
 ## Description
 
